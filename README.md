@@ -281,52 +281,32 @@ Calculate model performance.
 Display the Actual vs Predicted visualization.
 Display XGBoost feature importance.
 Save the final XGBoost model locally.
-🔬 Project Workflow
-                  ┌──────────────────────┐
-                  │ Agricultural Dataset │
-                  └──────────┬───────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Data Preprocessing   │
-                  │ • Missing Values     │
-                  │ • Label Encoding     │
-                  └──────────┬───────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Feature / Target     │
-                  │ Separation           │
-                  └──────────┬───────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Train-Test Split     │
-                  │ 80% / 20%            │
-                  └──────────┬───────────┘
-                             ↓
-             ┌───────────────┼────────────────┐
-             ↓               ↓                ↓
-      Linear Regression  Random Forest     XGBoost
-             │               │                │
-             ↓               ↓                ↓
-             └───────────────┼────────────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Model Evaluation     │
-                  │ R² + RMSE            │
-                  └──────────┬───────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Best Model: XGBoost  │
-                  └──────────┬───────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Predictions +        │
-                  │ Feature Importance   │
-                  └──────────┬───────────┘
-                             ↓
-                  ┌──────────────────────┐
-                  │ Saved ML Model       │
-                  │ .pkl                 │
-                  └──────────────────────┘
+
+
+## 🔬 Project Workflow
+
+```mermaid
+flowchart TD
+    A[Agricultural Dataset] --> B[Data Preprocessing]
+    B --> C[Remove Missing Values]
+    C --> D[Label Encoding]
+    D --> E[Feature / Target Separation]
+    E --> F[Train-Test Split 80/20]
+    F --> G[Model Training]
+    
+    G --> H[Linear Regression]
+    G --> I[Random Forest]
+    G --> J[XGBoost]
+    
+    H --> K[Model Evaluation]
+    I --> K
+    J --> K
+    
+    K --> L[R² Score + RMSE]
+    L --> M[Best Model: XGBoost]
+    M --> N[Predictions + Feature Importance]
+    N --> O[Saved XGBoost Model]
+```
 🏆 Results
 
 The project evaluated multiple regression algorithms and found that XGBoost performed best among the tested models.
